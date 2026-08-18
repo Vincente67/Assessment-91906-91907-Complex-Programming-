@@ -27,4 +27,12 @@ screen.setup(width = 900, height=700)
 screen.bgcolor("white")
 
 
-# Turtle
+# Turtle used to draw the shape
+pen = turtle.Turtle()
+pen.speed(0)
+pen.pensize(3)
+pen.color("blue")
+pen.penup()
+
+
+#Turtle
