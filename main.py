@@ -12,5 +12,19 @@
 # Additional techniques 
 # - Turtle non-core library` 
 # - List of coordinate tuples 
-#------------------------------------------------------------------
+# -------------------------------------------------------------------
 
+import turtle 
+
+
+# -------------------------------------------------------------------
+#Setup
+# -------------------------------------------------------------------
+
+screen = turtle.Screen()
+screen.title("Turtle Shape desinger")
+screen.setup(width = 900, height=700)
+screen.bgcolor("white")
+
+
+# Turtle
