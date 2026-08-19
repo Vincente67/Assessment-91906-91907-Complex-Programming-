@@ -41,3 +41,14 @@ writer.hideturtle()
 writer.penup()
 writer.goto(-430, 300)
 
+writer.write(
+    "TURTLE SHAPE DESIGNER",
+    font=("Arial", 18, "bold")
+)
+
+writer.goto(-430, 265)
+writer.write(
+    "Left Click = Add Point",
+    font=("Arial", 12, "normal")
+)
+
