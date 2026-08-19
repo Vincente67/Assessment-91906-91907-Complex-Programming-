@@ -64,3 +64,14 @@ writer.write(
     font=("Arial", 12, "normal")
 )
 
+writer.goto(-430, 190)
+writer.write(
+    "C = Clear Shape",
+    font=("Arial", 12, "normal")
+)
+
+writer.goto(-430, 165)
+writer.write(
+    "S = Save Coordinates",
+    font=("Arial", 12, "normal")
+)
