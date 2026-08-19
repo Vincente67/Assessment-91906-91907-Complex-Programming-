@@ -18,7 +18,7 @@ import turtle
 
 
 # -------------------------------------------------------------------
-#Setup
+# Setup
 # -------------------------------------------------------------------
 
 screen = turtle.Screen()
@@ -35,4 +35,9 @@ pen.color("blue")
 pen.penup()
 
 
-#Turtle
+# Turtle used to display instructions 
+writer = turtle.Turtle()
+writer.hideturtle()
+writer.penup()
+writer.goto(-430, 300)
+
