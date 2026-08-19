@@ -52,3 +52,15 @@ writer.write(
     font=("Arial", 12, "normal")
 )
 
+writer.goto(-430, 240)
+writer.write(
+    "Enter = Finish Shape",
+    font=("Arial", 12, "normal")
+)
+
+writer.goto(-430, 215)
+writer.write(
+    "U = Undo Last Point",
+    font=("Arial", 12, "normal")
+)
+
