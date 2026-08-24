@@ -112,3 +112,19 @@ def redraw_shape():
 
     pen.clear()
     pen.penup()
+
+    if len(points) == 0:
+        return
+
+    # Move to the first point
+    pen.goto(points[0])
+    pen.pendown()
+
+    # Draw lines between each point
+    for point in points[1:]:
+        pen.goto(point)
+
+    pen.penup()
+
+
+
