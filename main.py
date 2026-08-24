@@ -144,8 +144,15 @@ def add_point(x, y):
     # Store the mouse position as a coordinate tuple
     points.append((round(x), round(y)))
 
+    # Draw the updated shape 
+    redraw_shape()
+
+    print("Point added:", (round(x), round(y)))
 
 
+# -------------------------------------------------------------------
+# FINISH SHAPE
+# -------------------------------------------------------------------
 
 
 
