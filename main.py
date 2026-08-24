@@ -211,5 +211,24 @@ def clear_shape():
     pen.clear()
     pen.penup()
 
-    
+# -------------------------------------------------------------------
+# SAVE COORDINATES
+# -------------------------------------------------------------------
+
+def save_coordinates():
+    """Saves the coordinates to a text file."""
+
+    if len(points) < 3:
+        print("Create a shape first.")
+        return
+
+    with open("coordinates.txt", "w") as file:
+        file.write("Turtle Shape Coordinates\n")
+        file.write(str(points))
+
+    print("Coordinates saved!")
+
+# -------------------------------------------------------------------
+# GENERATE PYTHON CODE
+# -------------------------------------------------------------------
 
