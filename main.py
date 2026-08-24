@@ -75,3 +75,40 @@ writer.write(
     "S = Save Coordinates",
     font=("Arial", 12, "normal")
 )
+
+writer.goto(-430, 140)
+writer.write(
+    "G = Generate Python Code",
+    font=("Arial", 12, "normal")
+)
+
+writer.goto(-430, 115)
+writer.write(
+    "Q = Quit",
+    font=("Arial", 12, "normal")
+)
+
+# -------------------------------------------------------------------
+# DATA STORAGE
+# -------------------------------------------------------------------
+
+# Stores every coordinate clicked by the user.
+# Each coordinate is stored as a tuple.
+points = []
+
+
+# Keeps track of whether the shape has been completed.
+shape_finished = False
+
+# -------------------------------------------------------------------
+# DRAW FUNCTION
+# -------------------------------------------------------------------
+
+def redraw_shape():
+    """
+    Redraws the current shape using coordinates 
+    stored in the points list.
+    """
+
+    pen.clear()
+    pen.penup()
