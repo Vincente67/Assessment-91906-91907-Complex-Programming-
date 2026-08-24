@@ -154,7 +154,23 @@ def add_point(x, y):
 # FINISH SHAPE
 # -------------------------------------------------------------------
 
+def finish_shape():
+    """
+    Finishes the shape by connecting the last point 
+    back to the first point.
+    """
 
+    global shape_finished
+    
+    if len(points) < 3:
+        print("You need at least 3 points.")
+        return
 
+    shape_finished = True
 
+    pen.penup()
+    pen.goto(points[0])
+    pen.pendown()
 
+    # Connect the final point back to the first point 
+    
