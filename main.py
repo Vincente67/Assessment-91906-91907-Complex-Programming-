@@ -126,5 +126,28 @@ def redraw_shape():
 
     pen.penup()
 
+# -------------------------------------------------------------------
+# ADD POINT
+# -------------------------------------------------------------------
+
+def add_point(x, y):
+    """
+    Adds the position of the mouse click to the points list.
+    """
+
+    global shape_finished
+    
+    # Do not allow new points after finishing the shape
+    if shape_finished:
+        return
+
+    # Store the mouse position as a coordinate tuple
+    points.append((round(x), round(y)))
+
+
+
+
+
+
 
 
