@@ -232,3 +232,31 @@ def save_coordinates():
 # GENERATE PYTHON CODE
 # -------------------------------------------------------------------
 
+def generate_python_code():
+    """Create Python Turtle code for the shape."""
+
+        if len(points) < 3:
+        print("Create a shape first.")
+        return
+
+    with open("custom_shape.py", "w") as file:
+        file.write(
+            "import turtle\n"
+            "screen = turtle.Screen()\n"
+            "shape = turtle.Shape('compound')\n"
+            "points = (\n"
+        )
+
+        for point in points:
+            file.write(f"    {point},\n")
+
+        file.write(
+            ")\n"
+            "shape.addcomponent(points, 'blue', 'black')\n"
+            "screen.register_shape('custom_shape', shape)\n"
+            "t = turtle.Turtle()\n"
+            "t.shape('custom_shape')\n"
+            "turtle.done()\n"
+        )
+
+    print("Python code saved!")
