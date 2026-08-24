@@ -235,7 +235,7 @@ def save_coordinates():
 def generate_python_code():
     """Create Python Turtle code for the shape."""
 
-        if len(points) < 3:
+    if len(points) < 3:
         print("Create a shape first.")
         return
 
@@ -260,3 +260,26 @@ def generate_python_code():
         )
 
     print("Python code saved!")
+
+# -------------------------------------------------------------------
+# CONTROLS 
+# -------------------------------------------------------------------
+
+screen.onclick(add_point)
+screen.listen
+
+screen.onkeypress(finish_shape, "Return")
+screen.onkeypress(undo_point, "u")
+screen.onkeypress(clear_shape, "c")
+screen.onkeypress(save_coordinates, "s")
+screen.onkeypress(generate_python_code, "g")
+screen.onkeypress(screen.bye, "q")
+
+# -------------------------------------------------------------------
+# START 
+# -------------------------------------------------------------------
+
+print("Enter = Finish | U = Undo | C = Clear")
+print("S = Save Coordinates | G = Generate Code")
+
+turtle.done()
