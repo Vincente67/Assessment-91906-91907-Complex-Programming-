@@ -173,4 +173,43 @@ def finish_shape():
     pen.pendown()
 
     # Connect the final point back to the first point 
+    pen.goto(points[0])
+    pen.penup()
+
+    print("Shape finished.")
+    print("Coordinates:")
+    print(points)
+
+# -------------------------------------------------------------------
+# UNDO
+# -------------------------------------------------------------------
+
+def undo_point(): 
+    """Remove the last point."""
+
+    global shape_finished 
+
+    if points:
+        shape_finished = False
+        points.pop()
+        redraw_shape()
+    else:
+        print("No points to undo")
+
+
+# -------------------------------------------------------------------
+# CLEAR
+# -------------------------------------------------------------------
+
+def clear_shape():
+    """Clear the drawing and coordinates"""
+
+    global shape_finished 
+
+    points.clear()
+    shape_finished = False
+    pen.clear()
+    pen.penup()
+
     
+
