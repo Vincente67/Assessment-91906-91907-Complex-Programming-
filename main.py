@@ -98,7 +98,6 @@ writer.write(
 # Each coordinate is stored as a tuple.
 points = []
 
-
 # Keeps track of whether the shape has been completed.
 shape_finished = False
 
@@ -208,30 +207,31 @@ def finish_shape():
 # UNDO
 # -------------------------------------------------------------------
 
-def undo_point(): 
-    """Remove the last point."""
+def undo_point():
+    """Removes the last point."""
 
-    global shape_finished 
+    global shape_finished
 
-       if points:
+    if points:
         shape_finished = False
         points.pop()
         redraw_shape()
         show_coordinates()
     else:
-        print("No points to undo")
+        print("No points to undo.")
 
 # -------------------------------------------------------------------
 # CLEAR
 # -------------------------------------------------------------------
 
 def clear_shape():
-    """Clear the drawing and coordinates"""
+    """Clears the drawing and coordinates."""
 
-    global shape_finished 
+    global shape_finished
 
     points.clear()
     shape_finished = False
+
     pen.clear()
     pen.penup()
 
