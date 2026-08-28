@@ -88,6 +88,8 @@ writer.write(
     font=("Arial", 12, "normal")
 )
 
+
+
 # -------------------------------------------------------------------
 # DATA STORAGE
 # -------------------------------------------------------------------
@@ -100,6 +102,27 @@ points = []
 # Keeps track of whether the shape has been completed.
 shape_finished = False
 
+
+# -------------------------------------------------------------------
+# Coordinate Display
+# -------------------------------------------------------------------
+
+coordinate_writer = turtle.Turtle()
+coordinate_writer.hideturtle()
+coordinate_writer.penup()
+
+def show_coordinates():
+    """Displays coordinates underneath the shape."""
+
+    coordinate_writer.clear()
+    coordinate_writer.goto(-430, -300)
+
+    coordinate_writer.write(
+        "Coordinates: " + " ".join(str(point) for point in points),
+        font=("Arial", 11, "normal")
+    )
+
+    
 # -------------------------------------------------------------------
 # DRAW FUNCTION
 # -------------------------------------------------------------------
