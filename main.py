@@ -154,21 +154,22 @@ def redraw_shape():
 # -------------------------------------------------------------------
 
 def add_point(x, y):
-    """
-    Adds the position of the mouse click to the points list.
-    """
+    """Adds the position of the mouse click to the points list."""
 
     global shape_finished
-    
-    # Do not allow new points after finishing the shape
+
+    # Do not allow points after finishing the shape
     if shape_finished:
         return
 
     # Store the mouse position as a coordinate tuple
     points.append((round(x), round(y)))
 
-    # Draw the updated shape 
+    # Draw the updated shape
     redraw_shape()
+
+    # Update the coordinates shown on screen
+    show_coordinates()
 
     print("Point added:", (round(x), round(y)))
 
