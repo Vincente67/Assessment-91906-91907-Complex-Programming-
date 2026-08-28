@@ -213,13 +213,13 @@ def undo_point():
 
     global shape_finished 
 
-    if points:
+       if points:
         shape_finished = False
         points.pop()
         redraw_shape()
+        show_coordinates()
     else:
         print("No points to undo")
-
 
 # -------------------------------------------------------------------
 # CLEAR
@@ -234,6 +234,8 @@ def clear_shape():
     shape_finished = False
     pen.clear()
     pen.penup()
+
+    coordinate_writer.clear()
 
 # -------------------------------------------------------------------
 # SAVE COORDINATES
