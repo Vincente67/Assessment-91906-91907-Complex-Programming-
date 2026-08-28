@@ -292,7 +292,7 @@ def generate_python_code():
 # -------------------------------------------------------------------
 
 screen.onclick(add_point)
-screen.listen
+screen.listen()
 
 screen.onkeypress(finish_shape, "Return")
 screen.onkeypress(undo_point, "u")
