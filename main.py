@@ -21,6 +21,7 @@ import turtle
 # Setup
 # -------------------------------------------------------------------
 
+# Screen used to display program 
 screen = turtle.Screen()
 screen.title("Turtle Shape desinger")
 screen.setup(width = 900, height=700)
@@ -46,6 +47,7 @@ writer.write(
     font=("Arial", 18, "bold")
 )
 
+# Displays the controls for the user 
 writer.goto(-430, 265)
 writer.write(
     "Left Click = Add Point",
@@ -106,6 +108,7 @@ shape_finished = False
 # Coordinate Display
 # -------------------------------------------------------------------
 
+# Turtle used to display coordinates 
 coordinate_writer = turtle.Turtle()
 coordinate_writer.hideturtle()
 coordinate_writer.penup()
@@ -116,6 +119,7 @@ def show_coordinates():
     coordinate_writer.clear()
     coordinate_writer.goto(-430, -300)
 
+# Displays the saved coordinates 
     coordinate_writer.write(
         "Coordinates: " + " ".join(str(point) for point in points),
         font=("Arial", 11, "normal")
@@ -126,6 +130,7 @@ def show_coordinates():
 # DRAW FUNCTION
 # -------------------------------------------------------------------
 
+# Redraws the shape using stored coordinates 
 def redraw_shape():
     """
     Redraws the current shape using coordinates 
@@ -152,6 +157,7 @@ def redraw_shape():
 # ADD POINT
 # -------------------------------------------------------------------
 
+# Adds the mouse position to the list 
 def add_point(x, y):
     """Adds the position of the mouse click to the points list."""
 
@@ -177,14 +183,16 @@ def add_point(x, y):
 # FINISH SHAPE
 # -------------------------------------------------------------------
 
-def finish_shape():
+# Finishes the shape by connecting to the first point 
+def finish_shape():    
     """
     Finishes the shape by connecting the last point 
     back to the first point.
     """
 
     global shape_finished
-    
+
+# Checks that there are enough points 
     if len(points) < 3:
         print("You need at least 3 points.")
         return
@@ -207,6 +215,7 @@ def finish_shape():
 # UNDO
 # -------------------------------------------------------------------
 
+# Removes the last point from the list 
 def undo_point():
     """Removes the last point."""
 
@@ -224,6 +233,7 @@ def undo_point():
 # CLEAR
 # -------------------------------------------------------------------
 
+# Clears the current shape 
 def clear_shape():
     """Clears the drawing and coordinates."""
 
@@ -241,6 +251,7 @@ def clear_shape():
 # SAVE COORDINATES
 # -------------------------------------------------------------------
 
+# Save the coordinates to a text file 
 def save_coordinates():
     """Saves the coordinates to a text file."""
 
@@ -258,6 +269,7 @@ def save_coordinates():
 # GENERATE PYTHON CODE
 # -------------------------------------------------------------------
 
+# Creates a Python file for the shape 
 def generate_python_code():
     """Create Python Turtle code for the shape."""
 
@@ -273,6 +285,7 @@ def generate_python_code():
             "points = (\n"
         )
 
+        # Writes each coordinate into the Python file 
         for point in points:
             file.write(f"    {point},\n")
 
@@ -291,7 +304,10 @@ def generate_python_code():
 # CONTROLS 
 # -------------------------------------------------------------------
 
+# Allows mouse click to add points
 screen.onclick(add_point)
+
+# Allows keyboard controls 
 screen.listen()
 
 screen.onkeypress(finish_shape, "Return")
@@ -308,4 +324,5 @@ screen.onkeypress(screen.bye, "q")
 print("Enter = Finish | U = Undo | C = Clear")
 print("S = Save Coordinates | G = Generate Code")
 
+# Keeps the Turtle window open
 turtle.done()
