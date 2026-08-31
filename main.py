@@ -18,6 +18,66 @@ import turtle
 
 
 # -------------------------------------------------------------------
+# DATA STORAGE
+# -------------------------------------------------------------------
+
+points = []
+shape_finished = False
+
+
+# -------------------------------------------------------------------
+# FUNCTIONS
+# -------------------------------------------------------------------
+
+def show_coordinates():
+    """Displays coordinates underneath the shape."""
+
+    coordinate_writer.clear()
+    coordinate_writer.goto(-430, -300)
+
+    coordinate_writer.write(
+        "Coordinates: " + " ".join(str(point) for point in points),
+        font=("Arial", 11, "normal")
+    )
+
+def redraw_shape():
+    """ Redraws the current shape using coordinates."""
+
+    pen.clear()
+    pen.penup()
+
+    if len(points) == 0:
+        return
+
+    pen.goto(points[0])
+    pen.pendown()
+
+    for point in points[1:]:
+        pen.goto(point)
+
+    pen.penup()
+
+def add_point(x, y):
+    """Adds the mouse position to the points list."""
+
+    global shape_finished
+
+    if shape_finished:
+        return
+
+    point = (round(x), round(y))
+    points.append(point)
+
+    redraw_shape()
+    show_coordinates()
+
+    print("Point added:", point)
+
+
+def finish_shape():
+    
+
+# -------------------------------------------------------------------
 # Setup
 # -------------------------------------------------------------------
 
@@ -91,19 +151,6 @@ writer.write(
 )
 
 
-
-# -------------------------------------------------------------------
-# DATA STORAGE
-# -------------------------------------------------------------------
-
-# Stores every coordinate clicked by the user.
-# Each coordinate is stored as a tuple.
-points = []
-
-# Keeps track of whether the shape has been completed.
-shape_finished = False
-
-
 # -------------------------------------------------------------------
 # Coordinate Display
 # -------------------------------------------------------------------
@@ -112,71 +159,6 @@ shape_finished = False
 coordinate_writer = turtle.Turtle()
 coordinate_writer.hideturtle()
 coordinate_writer.penup()
-
-def show_coordinates():
-    """Displays coordinates underneath the shape."""
-
-    coordinate_writer.clear()
-    coordinate_writer.goto(-430, -300)
-
-# Displays the saved coordinates 
-    coordinate_writer.write(
-        "Coordinates: " + " ".join(str(point) for point in points),
-        font=("Arial", 11, "normal")
-    )
-
-    
-# -------------------------------------------------------------------
-# DRAW FUNCTION
-# -------------------------------------------------------------------
-
-# Redraws the shape using stored coordinates 
-def redraw_shape():
-    """
-    Redraws the current shape using coordinates 
-    stored in the points list.
-    """
-
-    pen.clear()
-    pen.penup()
-
-    if len(points) == 0:
-        return
-
-    # Move to the first point
-    pen.goto(points[0])
-    pen.pendown()
-
-    # Draw lines between each point
-    for point in points[1:]:
-        pen.goto(point)
-
-    pen.penup()
-
-# -------------------------------------------------------------------
-# ADD POINT
-# -------------------------------------------------------------------
-
-# Adds the mouse position to the list 
-def add_point(x, y):
-    """Adds the position of the mouse click to the points list."""
-
-    global shape_finished
-
-    # Do not allow points after finishing the shape
-    if shape_finished:
-        return
-
-    # Store the mouse position as a coordinate tuple
-    points.append((round(x), round(y)))
-
-    # Draw the updated shape
-    redraw_shape()
-
-    # Update the coordinates shown on screen
-    show_coordinates()
-
-    print("Point added:", (round(x), round(y)))
 
 
 # -------------------------------------------------------------------
