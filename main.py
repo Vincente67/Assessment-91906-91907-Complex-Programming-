@@ -217,6 +217,11 @@ writer.write("G = Generate Python Code", font=("Arial", 12, "normal"))
 writer.goto(-430, 115) 
 writer.write("Q = Quit", font=("Arial", 12, "normal"))
 
+# Turtle used to display coordinates
+coordinate_writer = turtle.Turtle()
+coordinate_writer.hideturtle()
+coordinate_writer.penup()
+
 # -------------------------------------------------------------------
 # CONTROLS 
 # -------------------------------------------------------------------
