@@ -141,189 +141,6 @@ def generate_python_code():
     if len(points) < 3:
         print("Create a shape first.")
         return
-        
-
-# -------------------------------------------------------------------
-# Setup
-# -------------------------------------------------------------------
-
-# Screen used to display program 
-screen = turtle.Screen()
-screen.title("Turtle Shape desinger")
-screen.setup(width = 900, height=700)
-screen.bgcolor("white")
-
-
-# Turtle used to draw the shape
-pen = turtle.Turtle()
-pen.speed(0)
-pen.pensize(3)
-pen.color("blue")
-pen.penup()
-
-
-# Turtle used to display instructions 
-writer = turtle.Turtle()
-writer.hideturtle()
-writer.penup()
-writer.goto(-430, 300)
-
-writer.write(
-    "TURTLE SHAPE DESIGNER",
-    font=("Arial", 18, "bold")
-)
-
-# Displays the controls for the user 
-writer.goto(-430, 265)
-writer.write(
-    "Left Click = Add Point",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 240)
-writer.write(
-    "Enter = Finish Shape",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 215)
-writer.write(
-    "U = Undo Last Point",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 190)
-writer.write(
-    "C = Clear Shape",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 165)
-writer.write(
-    "S = Save Coordinates",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 140)
-writer.write(
-    "G = Generate Python Code",
-    font=("Arial", 12, "normal")
-)
-
-writer.goto(-430, 115)
-writer.write(
-    "Q = Quit",
-    font=("Arial", 12, "normal")
-)
-
-
-# -------------------------------------------------------------------
-# Coordinate Display
-# -------------------------------------------------------------------
-
-# Turtle used to display coordinates 
-coordinate_writer = turtle.Turtle()
-coordinate_writer.hideturtle()
-coordinate_writer.penup()
-
-
-# -------------------------------------------------------------------
-# FINISH SHAPE
-# -------------------------------------------------------------------
-
-# Finishes the shape by connecting to the first point 
-def finish_shape():    
-    """
-    Finishes the shape by connecting the last point 
-    back to the first point.
-    """
-
-    global shape_finished
-
-# Checks that there are enough points 
-    if len(points) < 3:
-        print("You need at least 3 points.")
-        return
-
-    shape_finished = True
-
-    pen.penup()
-    pen.goto(points[0])
-    pen.pendown()
-
-    # Connect the final point back to the first point 
-    pen.goto(points[0])
-    pen.penup()
-
-    print("Shape finished.")
-    print("Coordinates:")
-    print(points)
-
-# -------------------------------------------------------------------
-# UNDO
-# -------------------------------------------------------------------
-
-# Removes the last point from the list 
-def undo_point():
-    """Removes the last point."""
-
-    global shape_finished
-
-    if points:
-        shape_finished = False
-        points.pop()
-        redraw_shape()
-        show_coordinates()
-    else:
-        print("No points to undo.")
-
-# -------------------------------------------------------------------
-# CLEAR
-# -------------------------------------------------------------------
-
-# Clears the current shape 
-def clear_shape():
-    """Clears the drawing and coordinates."""
-
-    global shape_finished
-
-    points.clear()
-    shape_finished = False
-
-    pen.clear()
-    pen.penup()
-
-    coordinate_writer.clear()
-
-# -------------------------------------------------------------------
-# SAVE COORDINATES
-# -------------------------------------------------------------------
-
-# Save the coordinates to a text file 
-def save_coordinates():
-    """Saves the coordinates to a text file."""
-
-    if len(points) < 3:
-        print("Create a shape first.")
-        return
-
-    with open("coordinates.txt", "w") as file:
-        file.write("Turtle Shape Coordinates\n")
-        file.write(str(points))
-
-    print("Coordinates saved!")
-
-# -------------------------------------------------------------------
-# GENERATE PYTHON CODE
-# -------------------------------------------------------------------
-
-# Creates a Python file for the shape 
-def generate_python_code():
-    """Create Python Turtle code for the shape."""
-
-    if len(points) < 3:
-        print("Create a shape first.")
-        return
 
     with open("custom_shape.py", "w") as file:
         file.write(
@@ -348,14 +165,63 @@ def generate_python_code():
 
     print("Python code saved!")
 
+
+# -------------------------------------------------------------------
+# Setup
+# -------------------------------------------------------------------
+
+screen = turtle.Screen()
+screen.title("Turtle Shape desinger")
+screen.setup(width = 900, height=700)
+screen.bgcolor("white")
+
+
+# Turtle used to draw the shape
+pen = turtle.Turtle()
+pen.speed(0)
+pen.pensize(3)
+pen.color("blue")
+pen.penup()
+
+
+# Turtle used for instructions 
+writer = turtle.Turtle()
+writer.hideturtle()
+writer.penup()
+writer.goto(-430, 300)
+
+writer.write(
+    "TURTLE SHAPE DESIGNER",
+    font=("Arial", 18, "bold")
+)
+
+writer.goto(-430, 265)
+writer.write(
+    "Left Click = Add Point", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 240)
+writer.write("Enter = Finish Shape", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 215) 
+writer.write("U = Undo Last Point", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 190)
+writer.write("C = Clear Shape", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 165)
+writer.write("S = Save Coordinates", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 140)
+writer.write("G = Generate Python Code", font=("Arial", 12, "normal"))
+
+writer.goto(-430, 115) 
+writer.write("Q = Quit", font=("Arial", 12, "normal"))
+
 # -------------------------------------------------------------------
 # CONTROLS 
 # -------------------------------------------------------------------
 
-# Allows mouse click to add points
-screen.onclick(add_point)
-
-# Allows keyboard controls 
+screen.onclick(add_point) 
 screen.listen()
 
 screen.onkeypress(finish_shape, "Return")
@@ -372,5 +238,4 @@ screen.onkeypress(screen.bye, "q")
 print("Enter = Finish | U = Undo | C = Clear")
 print("S = Save Coordinates | G = Generate Code")
 
-# Keeps the Turtle window open
 turtle.done()
