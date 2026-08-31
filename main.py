@@ -75,7 +75,73 @@ def add_point(x, y):
 
 
 def finish_shape():
+    """Connects the last point back to the first point."""
+
+    global shape_finished
+
+    if len(points) < 3:
+        print("You need at least 3 points.")
+        return
+
+    shape_finished = True
+
+    pen.penup()
+    pen.goto(points[0])
+    pen.pendown()
+    pen.goto(points[0])
+    pen.penup()
+
+    print("Shape finished.")
+    print("Coordinates:", points)
+
+
+def undo_point():
+    """Removes the last point."""
     
+    global shape_finished
+
+    if points:
+        shape_finished = False
+        points.pop()
+        redraw_shape()
+        show_coordinates()
+    else:
+        print("No points to undo.")
+
+
+def clear_shape():
+    """Clears the shape and coordinates."""
+
+    global shape_finished
+
+    points.clear()
+    shape_finished = False
+
+    pen.clear()
+    coordinate_writer.clear()
+
+
+def save_coordinates():
+    """Saves the coordinates to a text file."""
+
+    if len(points) < 3:
+        print("Create a shape first.")
+        return
+
+    with open("coordinates.txt", "w") as file:
+        file.write("Turtle Shape Coordinates\n")
+        file.write(str(points))
+
+    print("Coordinates saved!")
+
+
+def generate_python_code():
+    """Creates Python Turtle code for the shape."""
+
+    if len(points) < 3:
+        print("Create a shape first.")
+        return
+        
 
 # -------------------------------------------------------------------
 # Setup
